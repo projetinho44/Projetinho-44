@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f97316" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Projetinho 44" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Projetinho 44</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">UM DIA DE CADA VEZ</p>
+        <h1>Projetinho 44</h1>
+      </div>
+      <div class="avatar">44</div>
+    </header>
+
+    <main>
+      <section id="inicio" class="page active">
+        <div class="hero card orange-gradient">
+          <div>
+            <p class="muted-light">Olá! 👋</p>
+            <h2>Vamos cuidar de você hoje?</h2>
+          </div>
+          <div class="score"><span id="scoreValue">0</span><small>/100 pts</small></div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="card stat"><span>⚖️</span><small>Peso atual</small><strong id="currentWeight">137,0 kg</strong></article>
+          <article class="card stat"><span>🎯</span><small>Próxima meta</small><strong>130,0 kg</strong></article>
+          <article class="card stat"><span>📏</span><small>Altura</small><strong>1,73 m</strong></article>
+          <article class="card stat"><span>🔥</span><small>Sequência</small><strong id="streak">0 dias</strong></article>
+        </div>
+
+        <article class="card progress-card">
+          <div class="row-between"><div><small>Progresso para 130 kg</small><h3 id="remainingText">Faltam 7,0 kg</h3></div><b id="progressPercent">0%</b></div>
+          <div class="progress-track"><div id="weightProgress" class="progress-fill"></div></div>
+        </article>
+
+        <h2 class="section-title">Missões de hoje</h2>
+        <div class="mission-list">
+          <button class="mission card" data-task="food"><span>🍽️</span><div><strong>Seguir o plano alimentar</strong><small>Marque as refeições concluídas</small></div><i>›</i></button>
+          <button class="mission card" data-task="water"><span>💧</span><div><strong>Beber água</strong><small><b id="waterHome">0</b> de 10 copos</small></div><i>›</i></button>
+          <button class="mission card" data-task="exercise"><span>🚶</span><div><strong>Exercício do dia</strong><small id="exerciseHome">Consulte o plano</small></div><i>›</i></button>
+        </div>
+      </section>
+
+      <section id="alimentacao" class="page">
+        <div class="page-heading"><p>PLANO SEMANAL</p><h2>Alimentação</h2></div>
+        <div class="day-selector" id="foodDays"></div>
+        <div id="mealList" class="stack"></div>
+        <div class="notice">⚕️ Este plano é informativo. Ajustes de porções e restrições devem ser feitos com nutricionista ou médico.</div>
+      </section>
+
+      <section id="agua" class="page">
+        <div class="page-heading"><p>HIDRATAÇÃO</p><h2>Água do dia</h2></div>
+        <article class="card water-card">
+          <div class="water-ring"><span id="waterCount">0</span><small>/10 copos</small></div>
+          <h3 id="waterLiters">0,0 L consumidos</h3>
+          <p>Meta sugerida no aplicativo: 10 copos de 250 ml.</p>
+          <div class="water-actions"><button id="removeWater" class="secondary">− 1 copo</button><button id="addWater" class="primary">+ 1 copo</button></div>
+        </article>
+        <div id="waterCups" class="cups"></div>
+      </section>
+
+      <section id="exercicios" class="page">
+        <div class="page-heading"><p>FASE DE ADAPTAÇÃO</p><h2>Exercícios</h2></div>
+        <div class="day-selector" id="exerciseDays"></div>
+        <article id="exerciseCard" class="card exercise-card"></article>
+        <button id="completeExercise" class="primary full">Marcar exercício como concluído</button>
+        <div class="notice danger">⚠️ Interrompa a atividade se sentir dor no peito, tontura ou falta de ar forte e procure orientação médica.</div>
+      </section>
+
+      <section id="evolucao" class="page">
+        <div class="page-heading"><p>ACOMPANHAMENTO</p><h2>Evolução</h2></div>
+        <article class="card form-card">
+          <label for="weightInput">Novo peso (kg)</label>
+          <div class="input-row"><input id="weightInput" type="number" step="0.1" min="30" max="300" placeholder="Ex.: 136,5" /><button id="saveWeight" class="primary">Salvar</button></div>
+          <small>Registre de preferência no mesmo horário e nas mesmas condições.</small>
+        </article>
+        <article class="card chart-card">
+          <div class="row-between"><h3>Histórico de peso</h3><button id="clearData" class="text-button">Limpar</button></div>
+          <canvas id="weightChart" width="720" height="360"></canvas>
+        </article>
+        <div id="weightHistory" class="stack"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-page="inicio"><span>⌂</span><small>Início</small></button>
+      <button class="nav-item" data-page="alimentacao"><span>🍽️</span><small>Alimentação</small></button>
+      <button class="nav-item" data-page="agua"><span>💧</span><small>Água</small></button>
+      <button class="nav-item" data-page="exercicios"><span>🚶</span><small>Exercícios</small></button>
+      <button class="nav-item" data-page="evolucao"><span>📈</span><small>Evolução</small></button>
+    </nav>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
