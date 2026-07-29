@@ -1,25 +1,40 @@
-# Projetinho 44
+# SIGRI370 v2.0.0 — Base de Produção
 
-Web app instalável (PWA) para acompanhar alimentação, água, exercícios e evolução do peso.
+Sistema Integrado de Gestão para Registro de Imóveis 370.
 
-## Recursos
-- Plano alimentar semanal importado da planilha
-- Plano semanal de caminhadas e exercícios
-- Controle diário de água
-- Registro e gráfico de peso
-- Pontuação diária
-- Funciona offline depois do primeiro acesso
-- Pode ser adicionado à tela inicial do iPhone
+Esta entrega transforma a demonstração estática em uma arquitetura com frontend, API e banco de dados central.
 
-## Publicar gratuitamente no GitHub Pages
-1. Envie todos os arquivos deste projeto para o repositório.
-2. No GitHub, abra **Settings > Pages**.
-3. Em **Build and deployment**, escolha **Deploy from a branch**.
-4. Selecione a branch **main** e a pasta **/(root)**.
-5. Salve. O endereço será exibido pelo GitHub.
+## Estrutura
 
-## Instalar no iPhone
-Abra o endereço no Safari, toque em **Compartilhar** e depois em **Adicionar à Tela de Início**.
+```text
+frontend/   Aplicação web estática para Vercel
+backend/    API FastAPI, autenticação e regras de negócio
+render.yaml Infraestrutura de API e PostgreSQL no Render
+docs/       Implantação, escopo e segurança
+```
 
-## Privacidade
-Nesta primeira versão, os dados ficam somente no armazenamento local do navegador do aparelho. Não há login nem envio para servidor.
+## Funcionalidades incluídas
+
+- autenticação e perfis;
+- pessoas;
+- protocolos;
+- depósito prévio;
+- créditos, débitos, complementações, aplicações e restituições;
+- saldo e extrato;
+- Livro de Controle de Depósito Prévio;
+- Termo de Abertura e Termo de Encerramento;
+- biblioteca de normas com pesquisa e histórico;
+- pendências, checklist e produtividade;
+- auditoria;
+- configurações;
+- backup e restauração de dados operacionais.
+
+## Publicação
+
+Leia primeiro:
+
+`docs/DEPLOY-PASSO-A-PASSO.md`
+
+## Aviso
+
+A base técnica está pronta para implantação e testes multiusuário. Ela ainda precisa de configuração do ambiente, conferência dos modelos registrais, revisão das normas, testes de restauração e homologação jurídica, operacional, de segurança e LGPD antes do uso com dados reais.
